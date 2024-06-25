@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-""" Class LRUCache that inherits from BaseCaching in caching system."""
+""" Class MRUCache that inherits from BaseCaching in caching system."""
 BaseCaching = __import__('base_caching').BaseCaching
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """Class that inherits from base_caching file."""
 
     def __init__(self):
@@ -22,7 +22,7 @@ class LRUCache(BaseCaching):
         if key not in self.cache_data and len(
                 self.cache_data) >= BaseCaching.MAX_ITEMS:
             # Remove the last item (LRU)
-            last_key = self.order.pop(0)
+            last_key = self.order.pop()
             del self.cache_data[last_key]
             print("DISCARD: {}".format(last_key))
 
