@@ -22,7 +22,7 @@ class LRUCache(BaseCaching):
         if key not in self.cache_data and len(
                 self.cache_data) >= BaseCaching.MAX_ITEMS:
             # Remove the last item (LIFO)
-            last_key = self.order.pop()
+            last_key = self.order.pop(0)
             del self.cache_data[last_key]
             print("DISCARD: {}".format(last_key))
 
@@ -31,10 +31,12 @@ class LRUCache(BaseCaching):
             self.order.remove(key)
 
         self.cache_data[key] = item
-        self.order.insert(0, key)
+        self.order.append(key)
 
     def get(self, key):
         """ get an item by key."""
         if key is None or key not in self.cache_data:
             return None
+        self.order.remove(key)
+        self.order.append(key)
         return self.cache_data[key]
