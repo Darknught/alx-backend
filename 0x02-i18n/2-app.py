@@ -26,7 +26,7 @@ def index():
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(['en', 'fr'])
+    return request.accept_languages.best_match(['LANGUAGES'])
 
 
 if __name__ == "__main__":
