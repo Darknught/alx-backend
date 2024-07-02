@@ -26,6 +26,9 @@ def index():
 
 @babel.localeselector
 def get_locale():
+    """ A method that uses request.accept to determine best match
+    for supported languages.
+    """
     return request.accept_languages.best_match(['LANGUAGES'])
 
 
