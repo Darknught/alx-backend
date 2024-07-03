@@ -30,7 +30,13 @@ def index():
         A rendered HTML template for the index page with localized
         content.
     """
-    return render_template('3-index.html')
+
+    # Using `gettext` function (aliased as `_`) for localization
+    home_title = _("home_title")
+    home_header = _("home_header")
+
+    return render_template(
+            '3-index.html', home_title=hometitle, home_header=home_header)
 
 
 @babel.localeselector
