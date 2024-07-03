@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ Module that creates a flask app."""
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel, gettext as _
 
 
 app = Flask(__name__)
@@ -20,7 +20,16 @@ babel = Babel(app)
 
 @app.route('/')
 def index():
-    """ method to display template."""
+    """
+    Renders the index page with localized titles and headers.
+
+    This function uses the `gettext` function (aliased as `_`) to
+    fetch the localized versions of `home_title` and `home_header`.
+
+    Returns:
+        A rendered HTML template for the index page with localized
+        content.
+    """
     return render_template('4-index.html')
 
 
