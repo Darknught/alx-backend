@@ -26,8 +26,15 @@ def index():
 
 @babel.localeselector
 def get_locale():
-    """ A method that uses request.accept to determine best match
-    for supported languages.
+    """
+    Renders the index page with localized titles and headers.
+
+    This function uses the `gettext` function (aliased as `_`) to
+    fetch the localized versions of `home_title` and `home_header`.
+
+    Returns:
+        A rendered HTML template for the index page with localized
+        content.
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
